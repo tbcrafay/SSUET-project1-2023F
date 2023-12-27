@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Product
+import math
 
 # Create your views here.
 def index(request):
-    return render(request, 'shop/Index.html')
+    products = Product.objects.all()
+    print(products)
+    params = {'product':products}
+    return render(request, 'shop/Index.html', params )
 
 def about(request):
-    return HttpResponse("We are at about")
+     return render(request, 'shop/about.html')
 
 def contact(request):
     return HttpResponse("We are at contact")
@@ -23,6 +27,5 @@ def productView(request):
 
 def checkout(request):
     return HttpResponse("We are at checkout")
-
 
 
