@@ -28,8 +28,8 @@ def contact(request):
 def tracker(request):
     return render(request, 'shop/tracker.html')
 
-def search(request):
-    return HttpResponse("We are at search")
+def buynow(request):
+    return render(request, 'shop/buynow.html')
 
 def productView(request):
     return HttpResponse("We are at product view")
