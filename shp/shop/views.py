@@ -8,6 +8,29 @@ def index(request):
     products = Product.objects.all()
     print(products)
     
+    # for the filter system:
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    room_number = request.GET.get('room_number')
+    floor_number = request.GET.get('floor_number')
+
+    # Fetch available price ranges
+    max_price_options = Product.objects.values_list('price', flat=True).distinct()
+
+    if min_price and max_price:
+        products = products.filter(price__gte=min_price, price__lte=max_price)
+    if room_number:
+        products = products.filter(room_number=room_number)
+    if floor_number:
+        products = products.filter(floor_number=floor_number)
+
+    # Handle empty results and display messages
+    if not products:
+        # Display appropriate messa
+        ...
+        
+    params = {'products': products, 'max_price_options': max_price_options}
+
     params = {'products':products}
     return render(request, 'shop/Index.html', params )
 

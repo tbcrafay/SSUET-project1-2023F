@@ -191,17 +191,40 @@
       </div>
     </div>
   </div> -->
+  <div class="container my-4" style="margin-top: 50px; margin-bottom: 50px;  border-radius: 10px solid blue;">
+    <form action="/shop/" method="GET">
+      <label for="min_price">Minimum Price:</label>
+      <input type="number" name="min_price" id="min_price" min="0">
+
+      <label for="max_price">Maximum Price:</label>
+      <input type="number" name="max_price" id="max_price">
+
+
+      <label for="room_number">Number of Rooms:</label>
+      <input type="number" name="room_number" id="room_number" min="1" max="5">
+
+      <div class="form-group">
+        <label for="floor_number">Floor Number:</label>
+        <input type="number" name="floor_number" id="floor_number" min="1" max="5">
+      
+
+        <button type="submit">Filter</button>
+      </div>
+    </form>
+
+  </div>
 
   <div class="container">
     {% for product in products %}
     {% if forloop.counter0|divisibleby:4 %}<div class="row">{% endif %}
       <div class="col-md-3">
         <div class="card">
-          <img class="card-image-top"  style="height: 183px; width: 295px;" src='/media/{{product.image}}'>
+          <img class="card-image-top" style="height: 183px; width: 285px;" src='/media/{{product.image}}'>
           <div class="card-body">
-            <h5 class="card-title">{{ product.residence_name }}</h5>
-            <p class="card-text text-center">{{product.desc}}</p>
-            <p class="card-text">Rs. {{ product.price }}</p>
+            <h5 class="card-title"><b>Flat Number:</b> {{ product.flat_number }}</h5>
+            <p class="card-text text-center"><b>Floor Number: </b> {{product.floor_number}}</p>
+            <p class="card-text text-center"><b>Number of Rooms:</b> {{product.room_number}}</p>
+            <p class="card-text"><b>Rent =</b> Rs. {{ product.price }}</p>
             <a href="/shop/buynow" class="btn btn-primary">View More</a>
           </div>
         </div>
@@ -210,8 +233,24 @@
       {% if forloop.counter|divisibleby:4 or forloop.last %}
       {% endif %}
       {% endfor %}
-  </div>
+    </div>
 
+
+
+    <!-- 
+    <div class="container">
+      <form action="/shop/" method="GET">
+        <label for="min_price">Price Range:</label>
+        <input type="number" name="min_price" id="min_price" min="0">
+        <select name="max_price" id="max_price">
+        </select>
+        <label for="room_number">Number of Rooms:</label>
+        <input type="number" name="room_number" id="room_number" min="1" max="5">
+        <label for="floor_number">Floor Number:</label>
+        <input type="number" name="floor_number" id="floor_number" min="1" max="5">
+        <button type="submit">Filter</button>
+      </form>
+    </div> -->
 
     <!-- </div>
   </div>
