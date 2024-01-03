@@ -1,0 +1,67 @@
+  <!--     
+    {% for product in products %}
+    <div class="card">
+        <img src="{{ product.image.url }}" alt="{{ product.flat_number }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.flat_number }}</h5>
+            <p class="card-text">Price: {{ product.price }}<br>
+                Floor Number: {{ product.floor_number }}<br>
+                Room Number: {{ product.room_number }}
+            </p>
+            <button class="view-more"
+                href="{% url 'product_view' with card_state='expanded' product_id=product.id %}">View More</button>
+
+            {% if card_state == 'expanded' and product.additional_details %}
+            <div class="additional-details">
+                <h6 class="card-subtitle mb-2 text-muted">Additional Details:</h6>
+                {{ product.additional_details }}
+            </div>
+            <button class="view-less"
+                href="{% url 'product_view' with card_state='collapsed' product_id=product.id %}">View Less</button>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %} -->
+
+
+
+
+
+    
+        <!-- {% for product in products %}
+    <div class="card">
+      <img src="{{ product.image.url }}" alt="{{ product.flat_number }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.flat_number }}</h5>
+        <p class="card-text">Price: {{ product.price }}<br>
+           Floor Number: {{ product.floor_number }}<br>
+           Room Number: {{ product.room_number }}
+        </p>
+        <button class="view-more" href="{% url 'shop:buynow' with card_state='expanded' product_id=product.id %}">View More</button>
+    
+        {% if card_state == 'expanded' and product.additional_details %}
+        <div class="additional-details">
+          <h6 class="card-subtitle mb-2 text-muted">Additional Details:</h6>
+          {{ product.additional_details }}
+        </div>
+        <button class="view-less" href="{% url 'shop:buynow' with card_state='collapsed' product_id=product.id %}">View Less</button>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %} -->
+
+
+
+    <!-- <button class="view-less"
+                href="{% url 'shop:buynow_product' product_id=product.id %}?card_state=expanded">View Less</button> -->
+
+                <!-- <button class="view-more"
+                href="{% url 'shop:buynow_product' product_id=product.id %}?card_state=expanded">View More</button> -->
+                  <!--<a href="{% url 'shop:buynow_root' %}" class="view-all-products">View All Products</a>  -->
+
+
+                  <!-- {% if card_state == 'expanded' and product.additional_details %} --> 
+
+
+
+                  <!-- src="{%static 'shop/house.jpg' %} -->

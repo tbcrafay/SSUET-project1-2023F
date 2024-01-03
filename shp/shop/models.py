@@ -13,6 +13,7 @@ class Product(models.Model):
     # Floor and room number
     floor_number = models.PositiveSmallIntegerField(default=1)
     room_number = models.PositiveSmallIntegerField(default=1)
+    additional_details = models.TextField(blank=True)
 
     def __str__(self):
         return f"Flat {self.flat_number}"

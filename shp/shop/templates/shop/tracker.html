@@ -1,6 +1,265 @@
-{% extends 'shop/basic.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .wrapper {
+            max-width: 75%;
+            margin: auto;
+        }
+
+        .wrapper>p,
+        .wrapper>h1 {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .wrapper>h1 {
+            letter-spacing: 3px;
+        }
+
+        .accordion {
+            background-color: white;
+            color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 100%;
+            padding: 2rem 2.5rem;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .accordion i {
+            font-size: 1.6rem;
+        }
+
+        /* .active,
+        .accordion:hover {
+            background-color: #f1f7f5;
+        } */
+
+        .pannel {
+            padding: 0 2rem 2.5rem 2rem;
+            background-color: white;
+            overflow: hidden;
+            background-color: #f1f7f5;
+            display: none;
+        }
+
+        .pannel p {
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .faq {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+        }
+
+        .faq.active {
+            border: none;
+        }
+
+        marquee {
+            width: 100%;
+            background-color: #964B00;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 28px;
+            padding: 11px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    {% load static %}
+
+    <!-- scrolling headlines -->
+    <marquee direction="scrolling">
+        25% Off for 1st Year Students Till 15th-Jan 2024
+    </marquee>
+
+    <!-- navbar  -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/shop">
+                <img src="{%static 'shop/Logo_Roomify.png' %}" style="width: 90px; height: 80px;" alt="Your Brand Logo"
+                    class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/shop">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/shop/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/shop/tracker">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/shop/contact">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" style="width: 148px;">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
 
-{% block title %} FAQ {% endblock %}
+    <div class="wrapper">
+        <p>The Begninning of a New Asset class</p>
+        <h1>Frequently Asked Questions</h1>
 
-{% block body %} This is the FAQ section {% endblock %}
+        <div class="faq">
+            <button class="accordion">
+                <summary>How do I find an available room in a hostel near my university? </summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    Go to the "Search" page and enter your university name or location. You can also filter by specific
+                    criteria like budget, room type, and amenities. Our system will display a list of available rooms
+                    that match your preferences.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                <summary>Is it guaranteed that I will get a room if I book through your website? </summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    While we offer a wide range of available rooms, securing one depends on the hostel's vacancy and
+                    reservation timeline. Booking early increases your chances of getting your preferred choice. We
+                    recommend contacting the hostel directly for immediate availability confirmation.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                <summary>What is the booking process like?</summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+
+
+                    Simply browse available rooms, select your preferred choice, and follow the on-screen instructions.
+                    You'll need to create an account, provide basic information, and choose your payment method. Once
+                    confirmed, you'll receive a booking confirmation email with all the details.
+
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                <summary>What types of rooms are available?</summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    We offer a variety of options, from shared dorms to single rooms with private bathrooms. You can
+                    filter by room type during your search to see what's available in your desired location and budget
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                <summary>Can I move in before the official start date of my lease?</summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    This depends on the individual hostel's policies. Some might allow early check-in for a fee, while
+                    others might have strict move-in dates. You can contact the hostel directly to inquire about their
+                    policy
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                <summary>What happens if I need to cancel my booking?</summary>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    Each hostel has its own cancellation policy. Review the specific policy during the booking process
+                    or by contacting the hostel directly. Generally, cancellations incur fees depending on the notice
+                    period.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                this.parentElement.classList.toggle("active");
+
+                var pannel = this.nextElementSibling;
+
+                if (pannel.style.display === "block") {
+                    pannel.style.display = "none";
+                } else {
+                    pannel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -5,48 +5,10 @@
 
 {% block body %}
 {% load static %}
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{%static 'shop/house.jpg' %}" style="height: 600px;" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{%static 'shop/house1.jpg' %}" style="height: 600px;" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{%static 'shop/house2.jpg' %}" style="height: 600px;" class="d-block w-100" alt="...">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+
+<div style="max-width: 100%; justify-content: center; margin: 0 auto; padding-left: 300px; padding-bottom: 400px; background-color: #964B00 ;">
+    <img src="{%static 'shop/aboutus.jpg' %}" alt=""  >
 </div>
-
-
-<h1> Your Home Away from Home, On Campus and Beyond </h1>
-
-<p> We understand that finding the perfect apartment as a student can be a major stressor. That's why we created [your
-    portal name] - a one-stop shop for all your housing needs. We offer a diverse range of apartments, from studios to
-    shared rooms, all conveniently located near campus and buzzing with social activities."
-
-    "But we're more than just rentals. We want you to thrive! We offer academic support services, career guidance, and a
-    vibrant community where you can connect with fellow students, form friendships, and build lasting memories.</p>
-
 
 
 {% endblock %}

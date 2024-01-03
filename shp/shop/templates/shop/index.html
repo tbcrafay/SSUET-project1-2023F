@@ -56,6 +56,16 @@
     .checked {
       color: yellow;
     }
+
+    marquee {
+      width: 100%;
+      background-color: #964B00;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 28px;
+      padding: 11px;
+
+    }
   </style>
 
 </head>
@@ -65,9 +75,22 @@
   <!-- <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark"> -->
 
   {% load static %}
+
+  <!-- scrolling headlines -->
+  <marquee direction="scrolling">
+    25% Off for 1st Year Students Till 15th-Jan 2024
+  </marquee>
+
+
+
+  <!-- navbar  -->
+
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">SHP</a>
+      <a class="navbar-brand" href="/shop">
+        <img src="{%static 'shop/Logo_Roomify.png' %}" style="width: 90px; height: 80px;" alt="Your Brand Logo"
+          class="d-inline-block align-top">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -89,12 +112,44 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="submit" style="width: 148px;">Search</button>
         </form>
       </div>
     </div>
   </nav>
 
+  <!-- carousels -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="1000">
+        <img src="{%static 'shop/slider1.jpg' %}" class="d-block w-100" alt="..." style="width: 1200px; height: 700px;">
+      </div>
+      <div class="carousel-item" data-bs-interval="1000">
+        <img src="{%static 'shop/slider2.jpg' %}" class="d-block w-100" alt="..." style="width: 1200px; height: 700px;">
+      </div>
+      <div class="carousel-item" data-bs-interval="1000">
+        <img src="{%static 'shop/slider3.jpg' %}" class="d-block w-100" alt="..." style="width: 1200px; height: 700px;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
 
   <!-- <div class="container">
@@ -191,24 +246,28 @@
       </div>
     </div>
   </div> -->
-  <div class="container my-4" style="margin-top: 50px; margin-bottom: 50px;  border-radius: 10px solid blue;">
+  <div class="container my-4"
+    style="margin-top: 50px; margin-bottom: 50px;  border-width: 5px; border-style: double; border-color: rgb(105, 104, 104); width: 2300px; height: 150px; border-radius: 20px; ">
     <form action="/shop/" method="GET">
-      <label for="min_price">Minimum Price:</label>
-      <input type="number" name="min_price" id="min_price" min="0">
 
-      <label for="max_price">Maximum Price:</label>
-      <input type="number" name="max_price" id="max_price">
+      <div class="form-group" style="padding-top: 12px;">
+       <label for="min_price"><h6>Minimum Price:</h6></label>
+       <input type="number" name="min_price" id="min_price" min="0">
+
+       <label for="max_price"><h6>Maximum Price:</h6></label>
+       <input type="number" name="max_price" id="max_price">
 
 
-      <label for="room_number">Number of Rooms:</label>
-      <input type="number" name="room_number" id="room_number" min="1" max="5">
+       <label for="room_number"><h6>Number of Beds:</h6></label>
+       <input type="number" name="room_number" id="room_number" min="1" max="5">
+      </div>
 
-      <div class="form-group">
-        <label for="floor_number">Floor Number:</label>
-        <input type="number" name="floor_number" id="floor_number" min="1" max="5">
-      
+      <div class="form-group" style="padding-top: 25px;">
+       <label for="flat_number"><h6>Dorm Number:</h6></label>
+       <input type="number" name="flat_number" id="flat_number" min="1" max="5">
 
-        <button type="submit">Filter</button>
+
+       <button type="submit" class="btn btn-outline-success" style="width: 148px; padding-bottom: 4px;">Filter</button>
       </div>
     </form>
 
@@ -221,11 +280,11 @@
         <div class="card">
           <img class="card-image-top" style="height: 183px; width: 285px;" src='/media/{{product.image}}'>
           <div class="card-body">
-            <h5 class="card-title"><b>Flat Number:</b> {{ product.flat_number }}</h5>
-            <p class="card-text text-center"><b>Floor Number: </b> {{product.floor_number}}</p>
-            <p class="card-text text-center"><b>Number of Rooms:</b> {{product.room_number}}</p>
+            <h5 class="card-title"><b>Dorm Number:</b> {{ product.flat_number }}</h5>
+            <p class="card-text text-center"><b>AC/Non-AC: </b> {{product.desc}}</p>
+            <p class="card-text text-center"><b>Number of Beds:</b> {{product.room_number}}</p>
             <p class="card-text"><b>Rent =</b> Rs. {{ product.price }}</p>
-            <a href="/shop/buynow" class="btn btn-primary">View More</a>
+            <a href="{% url 'shop:buynow' product.id %}" class="btn btn-primary">View More</a>
           </div>
         </div>
 

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product, Contact
 import math
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
     room_number = request.GET.get('room_number')
-    floor_number = request.GET.get('floor_number')
+    flat_number = request.GET.get('flat_number')
 
     # Fetch available price ranges
     max_price_options = Product.objects.values_list('price', flat=True).distinct()
@@ -21,8 +22,8 @@ def index(request):
         products = products.filter(price__gte=min_price, price__lte=max_price)
     if room_number:
         products = products.filter(room_number=room_number)
-    if floor_number:
-        products = products.filter(floor_number=floor_number)
+    if flat_number:
+        products = products.filter(flat_number=flat_number)
 
     # Handle empty results and display messages
     if not products:
@@ -51,8 +52,20 @@ def contact(request):
 def tracker(request):
     return render(request, 'shop/tracker.html')
 
-def buynow(request):
-    return render(request, 'shop/buynow.html')
+def buynow(request, product_id=None):
+    products = Product.objects.all()
+
+    if product_id:
+        selected_product = get_object_or_404(Product, id=product_id)
+        context = {'product': selected_product}
+    else:
+        context = {'products': products}
+
+    return render(request, 'shop/buynow.html', context)
+
+
+
+
 
 def productView(request):
     return HttpResponse("We are at product view")
